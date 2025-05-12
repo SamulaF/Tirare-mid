@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tirare</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body class="bg-black text-white font-sans transition-colors duration-500">
+    <header class="flex justify-between items-center p-4">
+      <h1 class="text-2xl font-bold">Tirare</h1>
+      <button onclick="toggleDarkMode()" class="text-xl">🌞</button>
+    </header>
+
+    <section class="relative h-[95vh] flex flex-col justify-center items-center text-center px-8">
+      <h1 class="text-5xl md:text-7xl font-bold max-w-4xl">
+        Man cannot remake himself without suffering, for he is both the marble and the sculptor.
+      </h1>
+      <p class="mt-6 text-xl text-gray-300 max-w-2xl">
+        Tirare is a revolution on wheels — replacing exploitative cycle-carts with modular, electric dignity-machines.
+      </p>
+      <button class="mt-8 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-2xl text-lg">Discover the Vision</button>
+      <div class="absolute bottom-4 text-gray-500 animate-bounce">↓ Scroll</div>
+    </section>
+
+    <section class="px-8 py-16">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-4xl font-bold mb-8">The Problem</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <p class="text-lg leading-relaxed">
+              Over 3 million informal laborers in India rely on outdated, manually-pulled carts to move goods across cities. Each day, a single cart-puller burns up to 5000 calories, suffers extreme spinal strain, and earns less than ₹300.
+            </p>
+            <ul class="list-disc mt-4 ml-4">
+              <li>Average lifespan: 52 years</li>
+              <li>Back injuries affect 78%</li>
+              <li>PM2.5 exposure: 4x WHO safe limit</li>
+            </ul>
+          </div>
+          <img src="/laborer-current-cart.jpg" alt="Current labor cart" class="rounded-2xl shadow-lg" />
+        </div>
+      </div>
+    </section>
+
+    <section class="px-8 py-16">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-4xl font-bold mb-8">The Tirare Solution</h2>
+        <div class="grid md:grid-cols-2 gap-12">
+          <div>
+            <h3 class="text-2xl font-semibold mb-4">Modular Electric Carts</h3>
+            <p>
+              Designed for dignity. Modular, upgradable, with electric-assist, solar top-ups, and ergonomic controls. Retrofits existing cycle carts too.
+            </p>
+            <ul class="list-disc mt-4 ml-4">
+              <li>Battery swap + solar charge</li>
+              <li>Smart meters + location tracking</li>
+              <li>Rent-to-own with ₹10/day EMIs</li>
+            </ul>
+          </div>
+          <img src="/metanoia-cart-diagram.png" alt="Tirare cart design diagram" class="rounded-2xl shadow-xl" />
+        </div>
+      </div>
+    </section>
+
+    <section class="px-8 py-20">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-4xl font-bold mb-6 text-center">Impact Calculator</h2>
+        <canvas id="lineChart" height="300"></canvas>
+      </div>
+    </section>
+
+    <section class="px-8 py-16">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-4xl font-bold mb-6 text-center">Cumulative Impact</h2>
+        <canvas id="barChart" height="300"></canvas>
+      </div>
+    </section>
+
+    <section class="px-8 py-16">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-4xl font-bold mb-4 text-center">Tirare & the Global Goals</h2>
+        <div class="grid md:grid-cols-2 gap-12 mt-12">
+          <div>
+            <ul class="space-y-4">
+              <li><strong>SDG 1:</strong> No Poverty — Enable income growth via ownership, reduce exploitation</li>
+              <li><strong>SDG 3:</strong> Good Health — Reduce physical strain & respiratory issues</li>
+              <li><strong>SDG 8:</strong> Decent Work — Create green jobs, promote equity</li>
+              <li><strong>SDG 9:</strong> Innovation — Pioneer modular mobility</li>
+              <li><strong>SDG 11:</strong> Sustainable Cities — Reduce congestion, empower workers</li>
+              <li><strong>SDG 13:</strong> Climate Action — Shrink transport emissions</li>
+            </ul>
+          </div>
+          <img src="/sdgs.png" alt="UN SDGs" class="rounded-xl" />
+        </div>
+      </div>
+    </section>
+
+    <section class="px-8 py-16">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-4xl font-bold mb-4">A Global Call</h2>
+        <p class="text-xl mb-6">
+          We invite UNDP, UNEP, and UN-Habitat to join us in empowering laborers, transforming cities, and proving that dignity can be designed.
+        </p>
+        <button class="text-lg px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl">View Our UN Prospectus</button>
+      </div>
+    </section>
+
+    <section class="px-8 py-16">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-4">Join the Movement</h2>
+        <p class="mb-6 text-gray-400">Are you a policymaker, funder, or UN representative? We’d love to work together.</p>
+        <form class="grid md:grid-cols-2 gap-6">
+          <input type="text" placeholder="Your Name" class="p-3 rounded bg-gray-100 text-black" />
+          <input type="text" placeholder="Your Organization" class="p-3 rounded bg-gray-100 text-black" />
+          <textarea placeholder="Message or Proposal" class="p-3 rounded bg-gray-100 text-black md:col-span-2"></textarea>
+          <button type="submit" class="md:col-span-2 text-lg px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl">Submit</button>
+        </form>
+      </div>
+    </section>
+
+    <footer class="text-center text-gray-500 text-sm py-8">
+      Tirare © 2025 | Built for humanity, backed by data.
+    </footer>
+
+    <script>
+      function toggleDarkMode() {
+        document.body.classList.toggle("bg-black");
+        document.body.classList.toggle("bg-white");
+        document.body.classList.toggle("text-white");
+        document.body.classList.toggle("text-black");
+      }
+
+      const impactData = {
+        labels: ["0 Carts", "20 Carts", "100 Carts", "500 Carts", "1000 Carts"],
+        datasets: [
+          {
+            label: "CO₂ Saved (tons)",
+            data: [0, 4.2, 21, 105, 210],
+            borderColor: "#8884d8",
+            fill: false,
+          },
+          {
+            label: "Income Uplift (₹ lakhs)",
+            data: [0, 0.6, 3, 15, 30],
+            borderColor: "#82ca9d",
+            fill: false,
+          },
+          {
+            label: "Hours Saved",
+            data: [0, 1200, 6000, 30000, 60000],
+            borderColor: "#ffc658",
+            fill: false,
+          },
+        ],
+      };
+
+      const summaryData = {
+        labels: ["Carts Replaced", "CO₂ Saved (tons)", "Hours Freed", "Income Uplift (%)"],
+        datasets: [
+          {
+            label: "Impact",
+            data: [200, 150, 45000, 35],
+            backgroundColor: "#38bdf8",
+          },
+        ],
+      };
+
+      new Chart(document.getElementById("lineChart"), {
+        type: "line",
+        data: impactData,
+        options: { responsive: true },
+      });
+
+      new Chart(document.getElementById("barChart"), {
+        type: "bar",
+        data: summaryData,
+        options: { responsive: true },
+      });
+    </script>
+  </body>
+</html>
